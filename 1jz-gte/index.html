@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>1JZ-GTE 3D</title>
+<meta name="description" content="トヨタ 1JZ-GTE（後期・VVT-i・シングルターボ）の中の動きを3Dで見られる勉強用モデル。通常版とカットモデル版。非公式。">
+<meta property="og:title" content="1JZ-GTE 3D">
+<meta property="og:description" content="直列6気筒ターボの中の動きを3Dで見られる勉強用モデル（非公式）">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://kwnfactory2004.github.io/engine-3d/1jz-gte/img/normal.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='4' fill='%230F382C'/%3E%3Cg fill='%23fff'%3E%3Ccircle cx='4' cy='5' r='1.3'/%3E%3Ccircle cx='8' cy='5' r='1.3'/%3E%3Ccircle cx='12' cy='5' r='1.3'/%3E%3Ccircle cx='4' cy='11' r='1.3'/%3E%3Ccircle cx='8' cy='11' r='1.3'/%3E%3Ccircle cx='12' cy='11' r='1.3'/%3E%3C/g%3E%3C/svg%3E">
+<style>
+:root{--g:#0F382C;--g2:#1d5a47;--g3:#3f6e5c;--g4:#9fc4b4;--g5:#cfe4da;--bg:#f4f7f5;--card:#fff;--line:#dfe6e2;--ink:#10281f;--sub:#5f7a6e}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI","Hiragino Sans","Yu Gothic UI",sans-serif;font-size:15px;line-height:1.7}
+.back{display:flex;width:max-content;align-items:center;min-height:40px;padding:0 14px;margin-bottom:16px;border:1px solid var(--g3);border-radius:999px;color:var(--g5);text-decoration:none;font-size:13px}
+.back:hover{border-color:var(--g4)}
+header{background:var(--g);background-image:radial-gradient(rgba(255,255,255,.13) 1px,transparent 1.6px);background-size:10px 10px;color:#fff;padding:32px 24px 28px}
+.wrap{max-width:1000px;margin:0 auto}
+.sub{color:var(--g4);margin:10px 0 0}
+main{max-width:1000px;margin:24px auto;padding:0 16px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;min-width:0}
+.card{grid-column:span 2;padding:0;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:border-color .15s}
+.card:hover{border-color:var(--g3)}
+.card img{width:100%;aspect-ratio:7/5;object-fit:cover;display:block;background:#3a3a3a}
+.card .body{padding:20px 24px 24px}
+.card h2{margin:0 0 4px;font-size:18px}
+.card p{margin:0 0 16px;color:var(--sub);font-size:14px}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:12px;background:var(--g);color:#fff}
+.wide{grid-column:span 4}
+.lab{display:block;color:var(--sub);margin-bottom:12px}
+ul{margin:0;padding-left:20px}
+li{margin:4px 0}
+.note{font-size:13px;color:var(--sub)}
+footer{max-width:1000px;margin:8px auto 40px;padding:0 16px;color:var(--sub);font-size:13px}
+@media (prefers-reduced-motion:no-preference){.tile{animation:up .45s both}.tile:nth-child(2){animation-delay:.035s}.tile:nth-child(3){animation-delay:.07s}.tile:nth-child(4){animation-delay:.105s}@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}}
+@media (max-width:760px){main{grid-template-columns:repeat(2,minmax(0,1fr))}.card,.wide{grid-column:span 2}header{padding:24px 16px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="../">← エンジン一覧へ</a>
+  <span id="title" role="img" aria-label="1JZ-GTE 3D"></span>
+  <p class="sub">トヨタ 直列6気筒 2.5L ツインカム24バルブ ターボ（後期型・VVT-i・シングルターボ）の中の動きを、ブラウザで回して見られる勉強用の3Dモデルです。</p>
+</div></header>
+<main>
+  <a class="tile card" href="./view.html">
+    <img src="./img/normal.jpg" alt="1JZ-GTE 後期型の3Dモデル（外観）" width="840" height="600">
+    <div class="body"><span class="lab" id="l1" role="img" aria-label="01 NORMAL"></span>
+      <h2>通常版</h2><p>エンジン全体。「外側を透かす」で中のピストンやバルブの動きが見られます。</p>
+      <span class="btn">開く</span></div>
+  </a>
+  <a class="tile card" href="./cutaway.html">
+    <img src="./img/cut.jpg" alt="1JZ-GTE のカットモデル（赤い面が切り口）" width="840" height="600">
+    <div class="body"><span class="lab" id="l2" role="img" aria-label="02 CUTAWAY"></span>
+      <h2>カットモデル版</h2><p>吸気側の前半分を切ってあります。赤い面が切り口。中の部品は動きます。</p>
+      <span class="btn">開く</span></div>
+  </a>
+  <div class="tile wide">
+    <span class="lab">できること</span>
+    <ul>
+      <li>ドラッグで回す・ホイールで寄る・右ドラッグで動かす（スマホは指で操作）</li>
+      <li>再生・一時停止・3°ずつ進める・はやさの調整、クランク角度の表示</li>
+      <li>6つの気筒が今「吸入・圧縮・燃焼・排気」のどれなのかを色で表示（点火順序 1-5-3-6-2-4）</li>
+      <li>部品をクリックすると名前が出る／部品のグループごとに表示・非表示</li>
+    </ul>
+    <p class="note" style="margin-top:16px">内径86mm・行程71.5mm・コンロッド125.25mm・点火順序などは公表値をもとにしています。外まわり（ターボや補機の位置、ヘッドカバーの文字など）は資料が少なく、推定で作った部分があります。トヨタ公式のものではなく、個人の勉強用の非公式モデルです。読み込みにはインターネット接続が必要です（約2MB）。</p>
+  </div>
+</main>
+<footer>KWN FACTORY</footer>
+<script>
+const F={'0':'0e11131519110e','1':'040c040404040e','2':'0e11010204081f','3':'1f02040201110e','J':'0702020202120c','Z':'1f01020408101f','G':'0e11101713110f','T':'1f040404040404','E':'1f10101e10101f','D':'1e11111111111e','N':'1111191513111','O':'0e11111111110e','R':'1e11111e141211','M':'111b1515111111','A':'0e11111f111111','L':'1010101010101f','C':'0e11101010110e','U':'1111111111110e','W':'11111115151b11','Y':'11110a04040404','-':'0000001f000000',' ':'00000000000000'};
+F['N']='11111915131111';
+function dots(el,txt,s){const P=[];let x=0;for(const ch of txt){const h=F[ch]||F[' '];for(let r=0;r<7;r++){const v=parseInt(h.substr(r*2,2),16);for(let c=0;c<5;c++)if(v&(16>>c))P.push(`M${(x+c)*s+s/2} ${r*s+s/2}m-${s*.4} 0a${s*.4} ${s*.4} 0 1 0 ${s*.8} 0a${s*.4} ${s*.4} 0 1 0 -${s*.8} 0`)}x+=6}
+el.innerHTML=`<svg width="${x*s}" height="${7*s}" viewBox="0 0 ${x*s} ${7*s}" fill="currentColor" aria-hidden="true" style="max-width:100%;height:auto"><path d="${P.join('')}"/></svg>`}
+dots(document.getElementById('title'),'1JZ-GTE 3D',6);
+dots(document.getElementById('l1'),'01 NORMAL',2);
+dots(document.getElementById('l2'),'02 CUTAWAY',2);
+</script>
+</body>
+</html>
