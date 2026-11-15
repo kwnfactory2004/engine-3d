@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ENGINE 3D</title>
-<meta name="description" content="エンジンの中の動きを、ブラウザで回して見られる勉強用の3Dモデル集。1JZ-GTE・13B-REW・G16E-GTS。非公式。">
+<meta name="description" content="エンジンの中の動きを、ブラウザで回して見られる勉強用の3Dモデル集。1JZ-GTE・13B-REW・G16E-GTS・G40E。非公式。">
 <meta property="og:title" content="ENGINE 3D">
 <meta property="og:description" content="エンジンの中の動きを3Dで見られる勉強用モデル集（非公式）">
 <meta property="og:type" content="website">
@@ -17,7 +17,7 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-
 header{background:var(--g);background-image:radial-gradient(rgba(255,255,255,.13) 1px,transparent 1.6px);background-size:10px 10px;color:#fff;padding:32px 24px 28px}
 .wrap{max-width:1100px;margin:0 auto}
 .sub{color:var(--g4);margin:10px 0 0}
-main{max-width:1100px;margin:24px auto;padding:0 16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+main{max-width:1100px;margin:24px auto;padding:0 16px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .tile{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;min-width:0}
 .card{padding:0;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:border-color .15s}
 .card:hover{border-color:var(--g3)}
@@ -69,6 +69,14 @@ footer{max-width:1100px;margin:8px auto 40px;padding:0 16px;color:var(--sub);fon
       <p>1.6L 3気筒。オフセットクランク・バランスシャフト・ローラーロッカーアームが動きます。</p>
       <span class="btn">開く</span></div>
   </a>
+  <a class="tile card" href="./g40e-v8/">
+    <img src="./g40e-v8/img/normal.jpg" alt="G40E V8 の3Dモデル" width="840" height="600">
+    <div class="body"><span class="lab" id="l4" role="img" aria-label="04 G40E V8"></span>
+      <h2>G40E（GR GT）</h2>
+      <div class="tags"><span>トヨタ</span><span>V型8気筒</span><span>ツインターボ</span><span>カット版あり</span></div>
+      <p>4.0L V8。V字の谷の上にターボ2個が並ぶ「ホットV」。8本のピストンとカム4本が動きます。</p>
+      <span class="btn">開く</span></div>
+  </a>
   <div class="tile wide">
     <span class="lab">できること</span>
     <ul>
@@ -82,13 +90,14 @@ footer{max-width:1100px;margin:8px auto 40px;padding:0 16px;color:var(--sub);fon
 </main>
 <footer>KWN FACTORY</footer>
 <script>
-const F={'0':'0e11131519110e','1':'040c040404040e','2':'0e11010204081f','3':'1f02040201110e','6':'06081e1111110e','B':'1e11111e11111e','J':'0702020202120c','Z':'1f01020408101f','G':'0e11101713110f','T':'1f040404040404','E':'1f10101e10101f','D':'1e11111111111e','N':'11111915131111','I':'0e04040404040e','R':'1e11111e141211','W':'11111115151b11','S':'0f10100e01011e','-':'0000001f000000',' ':'00000000000000'};
+const F={'0':'0e11131519110e','1':'040c040404040e','2':'0e11010204081f','3':'1f02040201110e','6':'06081e1111110e','B':'1e11111e11111e','J':'0702020202120c','Z':'1f01020408101f','G':'0e11101713110f','T':'1f040404040404','E':'1f10101e10101f','D':'1e11111111111e','N':'11111915131111','I':'0e04040404040e','R':'1e11111e141211','W':'11111115151b11','S':'0f10100e01011e','4':'02060a121f0202','8':'0e11110e11110e','V':'11111111110a04','-':'0000001f000000',' ':'00000000000000'};
 function dots(el,txt,s){const P=[];let x=0;for(const ch of txt){const h=F[ch]||F[' '];for(let r=0;r<7;r++){const v=parseInt(h.substr(r*2,2),16);for(let c=0;c<5;c++)if(v&(16>>c))P.push(`M${(x+c)*s+s/2} ${r*s+s/2}m-${s*.4} 0a${s*.4} ${s*.4} 0 1 0 ${s*.8} 0a${s*.4} ${s*.4} 0 1 0 -${s*.8} 0`)}x+=6}
 el.innerHTML=`<svg width="${x*s}" height="${7*s}" viewBox="0 0 ${x*s} ${7*s}" fill="currentColor" aria-hidden="true" style="max-width:100%;height:auto"><path d="${P.join('')}"/></svg>`}
 dots(document.getElementById('title'),'ENGINE 3D',6);
 dots(document.getElementById('l1'),'01 1JZ-GTE',2);
 dots(document.getElementById('l2'),'02 13B-REW',2);
 dots(document.getElementById('l3'),'03 G16E-GTS',2);
+dots(document.getElementById('l4'),'04 G40E V8',2);
 </script>
 </body>
 </html>
