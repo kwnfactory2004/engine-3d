@@ -73,8 +73,10 @@ body.fslock{overflow:hidden}
     <p class="lab">SHAFT ANGLE（シャフトの角度）</p>
     <div class="deg"><span id="degdot" class="dot" role="img" aria-label="0"></span><span>度</span></div>
     <div class="row" style="margin-top:12px"><button id="play" class="on">一時停止</button><button id="step">3°すすめる</button></div>
-    <p class="lab" style="margin-top:14px">はやさ</p>
-    <input type="range" id="speed" min="0.05" max="2" step="0.05" value="0.5">
+    <p class="lab" style="margin-top:14px">回転数 <b id="rpmv" style="color:#fff;font-size:15px">6 rpm</b></p>
+    <input type="range" id="speed" min="0" max="1000" step="1" value="0" aria-label="回転数（rpm）" data-max="8000">
+    <div class="row" id="rpmp" style="margin-top:8px;gap:6px"></div>
+    <p class="lab" style="margin:10px 0 0;line-height:1.6" id="rpmn"></p>
   </div>
   <div class="tile">
     <p class="lab">見え方</p>
@@ -184,6 +186,14 @@ document.getElementById('xray').onclick=e=>{
     else{m.material.transparent=m.userData.tr;m.material.opacity=m.userData.op;m.material.depthWrite=true}})});
 };
 const playB=document.getElementById('play'),spd=document.getElementById('speed');
+// 回転数：アニメは「速さ×1 ＝ 12rpm」（4サイクル 720°/10秒、13Bは 1080°/15秒）。スライダーは 1rpm〜最大を対数で動かす
+const RPMMAX=parseFloat(spd.dataset.max);let rpm=6,lastUp=0;
+const rpmv=document.getElementById('rpmv'),rpmn=document.getElementById('rpmn'),rpmp=document.getElementById('rpmp');
+function setRpm(v){rpm=Math.max(1,Math.min(RPMMAX,v));spd.value=Math.log(rpm)/Math.log(RPMMAX)*1000;rpmv.textContent=Math.round(rpm).toLocaleString()+' rpm';
+  rpmn.textContent=rpm>=100?'実物と同じ速さです。画面は毎秒60コマなので、残像のようにチラついて見えます（動きを見たいときは下げてください）。':'ゆっくり再生中。実際のエンジンはもっとずっと速く回っています。'}
+spd.oninput=()=>setRpm(Math.pow(RPMMAX,spd.value/1000));
+[['超スロー',6],['アイドル',800],['3000',3000],['6000',6000],['最大',RPMMAX]].forEach(([n,v])=>{const b=document.createElement('button');b.type='button';b.textContent=n;b.style.cssText='min-height:32px;padding:0 10px;font-size:12px';b.onclick=()=>setRpm(v);rpmp.append(b)});
+setRpm(6);
 playB.onclick=()=>{playing=!playing;playB.textContent=playing?'一時停止':'再生';playB.classList.toggle('on',playing)};
 document.getElementById('step').onclick=()=>{if(!mixer)return;playing=false;playB.textContent='再生';playB.classList.remove('on');mixer.update(INFO.dur/INFO.frames)};
 
@@ -204,9 +214,9 @@ const degEl=document.getElementById('degdot');let lastDeg=-1;
 const clock=new THREE.Clock();
 R.setAnimationLoop(()=>{
   const dt=clock.getDelta();
-  if(mixer&&playing)mixer.update(dt*parseFloat(spd.value));
+  if(mixer&&playing)mixer.update(dt*rpm/12);
   if(action){const t=action.time%INFO.dur;const th=t/INFO.dur*INFO.cycle;const dg=Math.round(th)%INFO.cycle;
-    if(dg!==lastDeg){lastDeg=dg;dots(degEl,String(dg),5);
+    if(dg!==lastDeg&&(rpm<100||performance.now()-lastUp>100)){lastDeg=dg;lastUp=performance.now();dots(degEl,String(dg),5);
       CH.forEach((n,i)=>{const d=cyEl.children[i];const loc=((th-INFO.chambers[n])%INFO.cycle+INFO.cycle)%INFO.cycle;const s=Math.floor(loc/270)%4;
         d.querySelector('span').textContent=ST[s];d.style.borderColor=COLS[s];d.style.boxShadow=`inset 0 -4px 0 ${COLS[s]}`;
         (chMesh[n]||[]).forEach(m=>{m.material.color.set(COLS[s]);if(m.material.emissive)m.material.emissive.set(COLS[s]).multiplyScalar(0.35)})})}}
