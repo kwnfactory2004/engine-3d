@@ -93,6 +93,14 @@ footer{max-width:1100px;margin:8px auto 40px;padding:0 16px;color:var(--sub);fon
       <p>2.6L・6連スロットル。赤いヘッドカバーの下で、6つのピストンとカム・バルブが動きます。</p>
       <span class="btn">開く</span></div>
   </a>
+  <a class="tile card" href="./ej20/">
+    <img src="./ej20/img/normal.jpg" alt="EJ20 の3Dモデル" width="840" height="600">
+    <div class="body"><span class="lab" id="l7" role="img" aria-label="07 EJ20"></span>
+      <h2>EJ20（EJ207・WRX STI）</h2>
+      <div class="tags"><span>スバル</span><span>水平対向4気筒</span><span>ターボ</span></div>
+      <p>2.0L・水平対向。左右から向き合うピストンと、ベルトで回る4本のカムが動きます。</p>
+      <span class="btn">開く</span></div>
+  </a>
   <div class="tile wide">
     <span class="lab">できること</span>
     <ul>
@@ -106,7 +114,7 @@ footer{max-width:1100px;margin:8px auto 40px;padding:0 16px;color:var(--sub);fon
 </main>
 <footer>KWN FACTORY</footer>
 <script>
-const F={'0':'0e11131519110e','1':'040c040404040e','2':'0e11010204081f','3':'1f02040201110e','6':'06081e1111110e','B':'1e11111e11111e','J':'0702020202120c','Z':'1f01020408101f','G':'0e11101713110f','T':'1f040404040404','E':'1f10101e10101f','D':'1e11111111111e','N':'11111915131111','I':'0e04040404040e','R':'1e11111e141211','W':'11111115151b11','S':'0f10100e01011e','4':'02060a121f0202','8':'0e11110e11110e','V':'11111111110a04','-':'0000001f000000',' ':'00000000000000'};
+const F={'7':'1f010204080808','0':'0e11131519110e','1':'040c040404040e','2':'0e11010204081f','3':'1f02040201110e','6':'06081e1111110e','B':'1e11111e11111e','J':'0702020202120c','Z':'1f01020408101f','G':'0e11101713110f','T':'1f040404040404','E':'1f10101e10101f','D':'1e11111111111e','N':'11111915131111','I':'0e04040404040e','R':'1e11111e141211','W':'11111115151b11','S':'0f10100e01011e','4':'02060a121f0202','8':'0e11110e11110e','V':'11111111110a04','-':'0000001f000000',' ':'00000000000000'};
 function dots(el,txt,s){const P=[];let x=0;for(const ch of txt){const h=F[ch]||F[' '];for(let r=0;r<7;r++){const v=parseInt(h.substr(r*2,2),16);for(let c=0;c<5;c++)if(v&(16>>c))P.push(`M${(x+c)*s+s/2} ${r*s+s/2}m-${s*.4} 0a${s*.4} ${s*.4} 0 1 0 ${s*.8} 0a${s*.4} ${s*.4} 0 1 0 -${s*.8} 0`)}x+=6}
 el.innerHTML=`<svg width="${x*s}" height="${7*s}" viewBox="0 0 ${x*s} ${7*s}" fill="currentColor" aria-hidden="true" style="max-width:100%;height:auto"><path d="${P.join('')}"/></svg>`}
 dots(document.getElementById('title'),'ENGINE 3D',6);
@@ -116,6 +124,7 @@ dots(document.getElementById('l3'),'03 G16E-GTS',2);
 dots(document.getElementById('l4'),'04 G40E V8',2);
 dots(document.getElementById('l5'),'05 2JZ-GTE',2);
 dots(document.getElementById('l6'),'06 RB26DETT',2);
+dots(document.getElementById('l7'),'07 EJ20',2);
 </script>
 </body>
 </html>
