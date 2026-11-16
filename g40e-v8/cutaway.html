@@ -48,6 +48,14 @@ input[type=range]{width:100%;accent-color:var(--g)}
 .pick{position:absolute;right:12px;top:12px;font-size:13px;background:#fff;border:1px solid var(--line);padding:8px 12px;border-radius:12px;display:none;max-width:60%}
 @media (max-width:820px){main{grid-template-columns:repeat(2,minmax(0,1fr))}.big{grid-column:span 2;min-height:420px}.wide{grid-column:span 2}.cyls{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:420px){header{padding:16px}}
+.fsb{position:absolute;right:12px;bottom:10px;min-height:40px;padding:0 14px;background:rgba(255,255,255,.92);display:flex;align-items:center;gap:6px;font-size:13px}
+.fsb.pp{right:auto;left:auto;display:none}
+.big.fs,.big:fullscreen{min-height:0;border-radius:0;border:0}
+.big.fs{position:fixed;inset:0;z-index:1000;width:auto;height:auto}
+.big.fs .fsb.pp,.big:fullscreen .fsb.pp{display:flex;right:100px}
+body.fslock{overflow:hidden}
+.big.fs .hint,.big:fullscreen .hint{bottom:58px}
+@supports(padding:max(0px)){.big.fs .fsb,.big:fullscreen .fsb{bottom:max(10px,env(safe-area-inset-bottom))}}
 </style>
 </head>
 <body>
@@ -59,7 +67,7 @@ input[type=range]{width:100%;accent-color:var(--g)}
 <main>
   <div class="tile big"><canvas id="view"></canvas><div id="load">モデルを読み込み中…</div>
     <div class="pick" id="pick"></div>
-    <div class="hint">部品をクリックすると名前が出ます</div></div>
+    <div class="hint">部品をクリックすると名前が出ます</div><button class="fsb pp" id="fspp" type="button" aria-label="再生・一時停止">一時停止</button><button class="fsb" id="fsbtn" type="button" aria-label="全画面表示">⛶ 全画面</button></div>
   <div class="tile g">
     <p class="lab">CRANK ANGLE</p>
     <div class="deg"><span id="degdot" class="dot" role="img" aria-label="0"></span><span>度</span></div>
@@ -194,6 +202,23 @@ R.setAnimationLoop(()=>{
         d.querySelector('span').textContent=ST[s];d.style.borderColor=COLS[s];d.style.boxShadow=`inset 0 -4px 0 ${COLS[s]}`})}}
   ctl.update();R.render(S,C);
 });
+</script>
+<script>
+(function(){
+const box=document.querySelector('.big'),b=document.getElementById('fsbtn'),pp=document.getElementById('fspp'),play=document.getElementById('play');
+if(!box||!b)return;
+const rq=box.requestFullscreen||box.webkitRequestFullscreen,ex=document.exitFullscreen||document.webkitExitFullscreen;
+const isFs=()=>!!(document.fullscreenElement||document.webkitFullscreenElement)||box.classList.contains('fs');
+function sync(){const on=isFs();b.textContent=on?'✕ 閉じる':'⛶ 全画面';b.setAttribute('aria-label',on?'全画面を閉じる':'全画面表示');document.body.classList.toggle('fslock',box.classList.contains('fs'));syncPP();dispatchEvent(new Event('resize'));setTimeout(()=>dispatchEvent(new Event('resize')),150)}
+function syncPP(){if(play)pp.textContent=play.textContent}
+function open(){if(rq){try{const p=rq.call(box);if(p&&p.catch)p.catch(()=>{box.classList.add('fs');sync()});return}catch(e){}}box.classList.add('fs');sync()}
+function close(){if(box.classList.contains('fs')){box.classList.remove('fs');sync()}else if(ex)ex.call(document)}
+b.onclick=()=>isFs()?close():open();
+pp.onclick=()=>play&&play.click();
+if(play)play.addEventListener('click',()=>setTimeout(syncPP,0));
+document.addEventListener('fullscreenchange',sync);document.addEventListener('webkitfullscreenchange',sync);
+addEventListener('keydown',e=>{if(e.key==='Escape'&&box.classList.contains('fs'))close();else if((e.key==='f'||e.key==='F')&&!/INPUT|TEXTAREA/.test(e.target.tagName)&&!e.metaKey&&!e.ctrlKey)b.onclick()});
+})();
 </script>
 </body>
 </html>
