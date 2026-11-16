@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>G40E V8 3D</title>
-<meta name="description" content="トヨタ GR GT の 4.0L V8 ツインターボ（通称 G40E）の中の動きを3Dで見られる勉強用モデル。通常版とカットモデル版。非公式。">
+<meta name="description" content="トヨタ GR GT の 4.0L V8 ツインターボ（通称 G40E）の中の動きを3Dで見られる勉強用モデル。非公式。">
 <meta property="og:title" content="G40E V8 3D">
 <meta property="og:description" content="V8ツインターボの中の動きを3Dで見られる勉強用モデル（非公式）">
 <meta property="og:type" content="website">
@@ -28,7 +28,7 @@ main{max-width:1000px;margin:24px auto;padding:0 16px;display:grid;grid-template
 .card h2{margin:0 0 4px;font-size:18px}
 .card p{margin:0 0 16px;color:var(--sub);font-size:14px}
 .btn{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:12px;background:var(--g);color:#fff}
-.wide{grid-column:span 4}
+.wide{grid-column:span 2}
 .lab{display:block;color:var(--sub);margin-bottom:12px}
 ul{margin:0;padding-left:20px}
 li{margin:4px 0}
@@ -51,12 +51,6 @@ footer{max-width:1000px;margin:8px auto 40px;padding:0 16px;color:var(--sub);fon
       <h2>通常版</h2><p>エンジン全体。V字の谷の上に並ぶターボ2個と触媒が見どころ。「外側を透かす」で8本のピストンとカムの動きが見られます。</p>
       <span class="btn">開く</span></div>
   </a>
-  <a class="tile card" href="./cutaway.html">
-    <img src="./img/cut.jpg" alt="G40E V8 のカットモデル（赤い面が切り口）" width="840" height="600">
-    <div class="body"><span class="lab" id="l2" role="img" aria-label="02 CUTAWAY"></span>
-      <h2>カットモデル版</h2><p>左バンクの前2気筒を、シリンダーの中心で切ってあります。赤い面が切り口。中の部品は動きます。</p>
-      <span class="btn">開く</span></div>
-  </a>
   <div class="tile wide">
     <span class="lab">できること</span>
     <ul>
@@ -76,7 +70,6 @@ function dots(el,txt,s){const P=[];let x=0;for(const ch of txt){const h=F[ch]||F
 el.innerHTML=`<svg width="${x*s}" height="${7*s}" viewBox="0 0 ${x*s} ${7*s}" fill="currentColor" aria-hidden="true" style="max-width:100%;height:auto"><path d="${P.join('')}"/></svg>`}
 dots(document.getElementById('title'),'G40E V8 3D',6);
 dots(document.getElementById('l1'),'01 NORMAL',2);
-dots(document.getElementById('l2'),'02 CUTAWAY',2);
 </script>
 </body>
 </html>
