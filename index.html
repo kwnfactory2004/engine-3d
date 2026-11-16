@@ -17,17 +17,26 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-
 header{background:var(--g);background-image:radial-gradient(rgba(255,255,255,.13) 1px,transparent 1.6px);background-size:10px 10px;color:#fff;padding:32px 24px 28px}
 .wrap{max-width:1100px;margin:0 auto}
 .sub{color:var(--g4);margin:10px 0 0}
-main{max-width:1100px;margin:24px auto;padding:0 16px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+main{max-width:1100px;margin:24px auto;padding:0 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
 .tile{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;min-width:0}
-.card{padding:0;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:border-color .15s}
+.card{position:relative;padding:0;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:border-color .15s}
 .card:hover{border-color:var(--g3)}
 .card img{width:100%;height:auto;aspect-ratio:7/5;object-fit:cover;display:block;background:#3a3a3a}
-.card .body{padding:20px 24px 24px;display:flex;flex-direction:column;flex:1}
-.card h2{margin:0 0 4px;font-size:18px}
-.card p{margin:0 0 16px;color:var(--sub);font-size:14px;flex:1}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px}
-.tags span{font-size:12px;color:var(--g);background:#e3eee9;border-radius:999px;padding:2px 10px}
-.btn{display:inline-flex;align-items:center;align-self:flex-start;min-height:44px;padding:0 18px;border-radius:12px;background:var(--g);color:#fff}
+.card .body{padding:12px 14px 14px;display:flex;flex-direction:column;flex:1}
+.card h2{margin:4px 0 6px;font-size:15px;line-height:1.4}
+.card p{position:absolute;left:0;right:0;top:0;aspect-ratio:7/5;overflow:hidden;margin:0;padding:12px 14px;background:rgba(15,56,44,.94);color:#fff;font-size:12.5px;line-height:1.6;opacity:0;transition:opacity .15s;pointer-events:none}
+.card:hover p,.card:focus-visible p{opacity:1}
+@media (hover:none){.card p{position:static;aspect-ratio:auto;padding:0;background:none;color:var(--sub);opacity:1;margin:0 0 8px}}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin:0}
+.tags span{font-size:11px;color:var(--g);background:#e3eee9;border-radius:999px;padding:1px 8px}
+.filters{grid-column:1/-1;display:flex;flex-direction:column;gap:8px}
+.frow{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.frow b{font-size:12px;color:var(--sub);font-weight:600;min-width:56px}
+.fbtn{font:inherit;font-size:13px;min-height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.fbtn:hover{border-color:var(--g3)}
+.fbtn[aria-pressed="true"]{background:var(--g);border-color:var(--g);color:#fff}
+.fcount{font-size:12px;color:var(--sub);margin:0}
+.card[hidden]{display:none}
 .wide{grid-column:1/-1}
 .lab{display:block;color:var(--sub);margin-bottom:12px}
 ul{margin:0;padding-left:20px}
@@ -45,69 +54,62 @@ footer{max-width:1100px;margin:8px auto 40px;padding:0 16px;color:var(--sub);fon
   <p class="sub">エンジンの中で部品がどう動くのかを、ブラウザで回して見られる勉強用の3Dモデル集です。</p>
 </div></header>
 <main>
+  <div class="filters" id="filters"></div>
   <a class="tile card" href="./1jz-gte/">
     <img src="./1jz-gte/img/normal.jpg" alt="1JZ-GTE の3Dモデル" width="840" height="600">
     <div class="body"><span class="lab" id="l1" role="img" aria-label="01 1JZ-GTE"></span>
       <h2>1JZ-GTE（後期型）</h2>
       <div class="tags"><span>トヨタ</span><span>直列6気筒</span><span>ターボ</span></div>
-      <p>2.5L・VVT-i・シングルターボ。6つのピストンとカム・バルブ・タイミングベルトが動きます。</p>
-      <span class="btn">開く</span></div>
+      <p>2.5L・VVT-i・シングルターボ。6つのピストンとカム・バルブ・タイミングベルトが動きます。</p></div>
   </a>
   <a class="tile card" href="./13b-rew/">
     <img src="./13b-rew/img/normal.jpg" alt="13B-REW の3Dモデル" width="840" height="600">
     <div class="body"><span class="lab" id="l2" role="img" aria-label="02 13B-REW"></span>
       <h2>13B-REW（FD3S）</h2>
       <div class="tags"><span>マツダ</span><span>ロータリー</span><span>2ローター</span><span>ツインターボ</span></div>
-      <p>おむすび形のローターが回って、吸入・圧縮・燃焼・排気をくり返すしくみが見られます。</p>
-      <span class="btn">開く</span></div>
+      <p>おむすび形のローターが回って、吸入・圧縮・燃焼・排気をくり返すしくみが見られます。</p></div>
   </a>
   <a class="tile card" href="./g16e-gts/">
     <img src="./g16e-gts/img/normal.jpg" alt="G16E-GTS の3Dモデル" width="840" height="600">
     <div class="body"><span class="lab" id="l3" role="img" aria-label="03 G16E-GTS"></span>
       <h2>G16E-GTS（GRヤリス）</h2>
       <div class="tags"><span>トヨタ</span><span>直列3気筒</span><span>ターボ</span></div>
-      <p>1.6L 3気筒。オフセットクランク・バランスシャフト・ローラーロッカーアームが動きます。</p>
-      <span class="btn">開く</span></div>
+      <p>1.6L 3気筒。オフセットクランク・バランスシャフト・ローラーロッカーアームが動きます。</p></div>
   </a>
   <a class="tile card" href="./g40e-v8/">
     <img src="./g40e-v8/img/normal.jpg" alt="G40E V8 の3Dモデル" width="840" height="600">
     <div class="body"><span class="lab" id="l4" role="img" aria-label="04 G40E V8"></span>
       <h2>G40E（GR GT）</h2>
       <div class="tags"><span>トヨタ</span><span>V型8気筒</span><span>ツインターボ</span></div>
-      <p>4.0L V8。V字の谷の上にターボ2個が並ぶ「ホットV」。8本のピストンとカム4本が動きます。</p>
-      <span class="btn">開く</span></div>
+      <p>4.0L V8。V字の谷の上にターボ2個が並ぶ「ホットV」。8本のピストンとカム4本が動きます。</p></div>
   </a>
   <a class="tile card" href="./2jz-gte/">
     <img src="./2jz-gte/img/normal.jpg" alt="2JZ-GTE の3Dモデル" width="840" height="600">
     <div class="body"><span class="lab" id="l5" role="img" aria-label="05 2JZ-GTE"></span>
       <h2>2JZ-GTE（JZA80 前期）</h2>
       <div class="tags"><span>トヨタ</span><span>直列6気筒</span><span>ツインターボ</span></div>
-      <p>3.0L・ツインターボ。86×86mm の6つのピストンとカム・バルブ・タイミングベルトが動きます。</p>
-      <span class="btn">開く</span></div>
+      <p>3.0L・ツインターボ。86×86mm の6つのピストンとカム・バルブ・タイミングベルトが動きます。</p></div>
   </a>
   <a class="tile card" href="./rb26dett/">
     <img src="./rb26dett/img/normal.jpg" alt="RB26DETT の3Dモデル" width="840" height="600">
     <div class="body"><span class="lab" id="l6" role="img" aria-label="06 RB26DETT"></span>
       <h2>RB26DETT（R34 GT-R）</h2>
       <div class="tags"><span>日産</span><span>直列6気筒</span><span>ツインターボ</span></div>
-      <p>2.6L・6連スロットル。赤いヘッドカバーの下で、6つのピストンとカム・バルブが動きます。</p>
-      <span class="btn">開く</span></div>
+      <p>2.6L・6連スロットル。赤いヘッドカバーの下で、6つのピストンとカム・バルブが動きます。</p></div>
   </a>
   <a class="tile card" href="./ej20/">
     <img src="./ej20/img/normal.jpg" alt="EJ20 の3Dモデル" width="840" height="600">
     <div class="body"><span class="lab" id="l7" role="img" aria-label="07 EJ20"></span>
       <h2>EJ20（EJ207・WRX STI）</h2>
       <div class="tags"><span>スバル</span><span>水平対向4気筒</span><span>ターボ</span></div>
-      <p>2.0L・水平対向。左右から向き合うピストンと、ベルトで回る4本のカムが動きます。</p>
-      <span class="btn">開く</span></div>
+      <p>2.0L・水平対向。左右から向き合うピストンと、ベルトで回る4本のカムが動きます。</p></div>
   </a>
   <a class="tile card" href="./sr20det/">
     <img src="./sr20det/img/normal.jpg" alt="SR20DET の3Dモデル" width="840" height="600">
     <div class="body"><span class="lab" id="l8" role="img" aria-label="08 SR20DET"></span>
       <h2>SR20DET（S15 シルビア）</h2>
       <div class="tags"><span>日産</span><span>直列4気筒</span><span>ターボ</span></div>
-      <p>2.0L・86×86mm。4つのピストンと、チェーンで回る2本のカム・16個のバルブが動きます。</p>
-      <span class="btn">開く</span></div>
+      <p>2.0L・86×86mm。4つのピストンと、チェーンで回る2本のカム・16個のバルブが動きます。</p></div>
   </a>
   <div class="tile wide">
     <span class="lab">できること</span>
@@ -134,6 +136,22 @@ dots(document.getElementById('l5'),'05 2JZ-GTE',2);
 dots(document.getElementById('l6'),'06 RB26DETT',2);
 dots(document.getElementById('l7'),'07 EJ20',2);
 dots(document.getElementById('l8'),'08 SR20DET',2);
+
+(function(){
+const cards=[...document.querySelectorAll('a.card')];
+const typeOf=t=>/直列/.test(t)?'直列':/V型/.test(t)?'V型':/水平対向/.test(t)?'水平対向':/ロータリー/.test(t)?'ロータリー':t;
+cards.forEach(c=>{const t=[...c.querySelectorAll('.tags span')].map(e=>e.textContent);c.dataset.maker=t[0];c.dataset.type=typeOf(t[1]);c.dataset.turbo=t.some(x=>/ターボ/.test(x))?'ターボ付き':'';});
+const sel={maker:'',type:''};
+const box=document.getElementById('filters');
+const count=document.createElement('p');count.className='fcount';count.setAttribute('aria-live','polite');
+function uniq(k){return [...new Set(cards.map(c=>c.dataset[k]).filter(Boolean))];}
+function row(label,k){const r=document.createElement('div');r.className='frow';r.innerHTML='<b>'+label+'</b>';
+ ['ぜんぶ',...uniq(k)].forEach(v=>{const b=document.createElement('button');b.type='button';b.className='fbtn';b.textContent=v;b.dataset.v=v==='ぜんぶ'?'':v;b.setAttribute('aria-pressed',v==='ぜんぶ'?'true':'false');
+  b.onclick=()=>{sel[k]=b.dataset.v;r.querySelectorAll('.fbtn').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));apply();};r.appendChild(b);});
+ box.appendChild(r);}
+function apply(){let n=0;cards.forEach(c=>{const ok=(!sel.maker||c.dataset.maker===sel.maker)&&(!sel.type||c.dataset.type===sel.type);c.hidden=!ok;if(ok)n++;});count.textContent=n+'台 表示中（全'+cards.length+'台）';}
+row('メーカー','maker');row('エンジン型','type');box.appendChild(count);apply();
+})();
 </script>
 </body>
 </html>
