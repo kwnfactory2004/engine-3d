@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ENGINE 3D</title>
-<meta name="description" content="エンジンの中の動きを、ブラウザで回して見られる勉強用の3Dモデル集。1JZ-GTE・13B-REW・G16E-GTS・G40E。非公式。">
+<meta name="description" content="エンジンの中の動きを、ブラウザで回して見られる勉強用の3Dモデル集。1JZ-GTE・13B-REW・G16E-GTS・G40E・2JZ-GTE・RB26DETT。非公式。">
 <meta property="og:title" content="ENGINE 3D">
 <meta property="og:description" content="エンジンの中の動きを3Dで見られる勉強用モデル集（非公式）">
 <meta property="og:type" content="website">
@@ -34,7 +34,7 @@ ul{margin:0;padding-left:20px}
 li{margin:4px 0}
 .note{font-size:13px;color:var(--sub)}
 footer{max-width:1100px;margin:8px auto 40px;padding:0 16px;color:var(--sub);font-size:13px}
-@media (prefers-reduced-motion:no-preference){.tile{animation:up .45s both}.tile:nth-child(2){animation-delay:.035s}.tile:nth-child(3){animation-delay:.07s}.tile:nth-child(4){animation-delay:.105s}@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}}
+@media (prefers-reduced-motion:no-preference){.tile{animation:up .45s both}.tile:nth-child(2){animation-delay:.035s}.tile:nth-child(3){animation-delay:.07s}.tile:nth-child(4){animation-delay:.105s}.tile:nth-child(5){animation-delay:.14s}.tile:nth-child(6){animation-delay:.175s}@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}}
 @media (max-width:900px){main{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){main{grid-template-columns:1fr}header{padding:24px 16px}}
 </style>
@@ -77,6 +77,22 @@ footer{max-width:1100px;margin:8px auto 40px;padding:0 16px;color:var(--sub);fon
       <p>4.0L V8。V字の谷の上にターボ2個が並ぶ「ホットV」。8本のピストンとカム4本が動きます。</p>
       <span class="btn">開く</span></div>
   </a>
+  <a class="tile card" href="./2jz-gte/">
+    <img src="./2jz-gte/img/normal.jpg" alt="2JZ-GTE の3Dモデル" width="840" height="600">
+    <div class="body"><span class="lab" id="l5" role="img" aria-label="05 2JZ-GTE"></span>
+      <h2>2JZ-GTE（JZA80 前期）</h2>
+      <div class="tags"><span>トヨタ</span><span>直列6気筒</span><span>ツインターボ</span></div>
+      <p>3.0L・ツインターボ。86×86mm の6つのピストンとカム・バルブ・タイミングベルトが動きます。</p>
+      <span class="btn">開く</span></div>
+  </a>
+  <a class="tile card" href="./rb26dett/">
+    <img src="./rb26dett/img/normal.jpg" alt="RB26DETT の3Dモデル" width="840" height="600">
+    <div class="body"><span class="lab" id="l6" role="img" aria-label="06 RB26DETT"></span>
+      <h2>RB26DETT（R34 GT-R）</h2>
+      <div class="tags"><span>日産</span><span>直列6気筒</span><span>ツインターボ</span></div>
+      <p>2.6L・6連スロットル。赤いヘッドカバーの下で、6つのピストンとカム・バルブが動きます。</p>
+      <span class="btn">開く</span></div>
+  </a>
   <div class="tile wide">
     <span class="lab">できること</span>
     <ul>
@@ -98,6 +114,8 @@ dots(document.getElementById('l1'),'01 1JZ-GTE',2);
 dots(document.getElementById('l2'),'02 13B-REW',2);
 dots(document.getElementById('l3'),'03 G16E-GTS',2);
 dots(document.getElementById('l4'),'04 G40E V8',2);
+dots(document.getElementById('l5'),'05 2JZ-GTE',2);
+dots(document.getElementById('l6'),'06 RB26DETT',2);
 </script>
 </body>
 </html>
