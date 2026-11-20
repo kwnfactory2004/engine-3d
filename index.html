@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ENGINE 3D</title>
-<meta name="description" content="エンジンの中の動きを、ブラウザで回して見られる勉強用の3Dモデル集。1JZ-GTE・13B-REW・G16E-GTS・G40E・2JZ-GTE・RB26DETT・EJ20・SR20DET・FA20・VR38DETT・1LR-GUE・1GZ-FE・1GD-FTV。非公式。">
+<meta name="description" content="エンジンの中の動きを、ブラウザで回して見られる勉強用の3Dモデル集。1JZ-GTE・13B-REW・G16E-GTS・G40E・2JZ-GTE・RB26DETT・EJ20・SR20DET・FA20・VR38DETT・1LR-GUE・1GZ-FE・1GD-FTV・1NR-FE・R26B・B16A。非公式。">
 <meta property="og:title" content="ENGINE 3D">
 <meta property="og:description" content="エンジンの中の動きを3Dで見られる勉強用モデル集（非公式）">
 <meta property="og:type" content="website">
@@ -147,6 +147,27 @@ footer{max-width:1100px;margin:8px auto 40px;padding:0 16px;color:var(--sub);fon
       <div class="tags"><span>トヨタ</span><span>直列4気筒</span><span>ディーゼルターボ</span></div>
       <p>2.8L・直4のディーゼルターボ。空気だけを縮めて軽油を吹き、4つのピストンが動きます。</p></div>
   </a>
+  <a class="tile card" href="./1nr-fe/">
+    <img src="./1nr-fe/img/normal.jpg" alt="1NR-FE の3Dモデル" width="840" height="600">
+    <div class="body"><span class="lab" id="l14" role="img" aria-label="14 1NR-FE"></span>
+      <h2>1NR-FE（ヴィッツ・ヤリス）</h2>
+      <div class="tags"><span>トヨタ</span><span>直列4気筒</span><span>NA</span></div>
+      <p>1.3L・直4のNA。吸気と排気のカムの動きを変えるしくみ（Dual VVT-i）も入った、4つのピストンが動くモデルです。</p></div>
+  </a>
+  <a class="tile card" href="./r26b/">
+    <img src="./r26b/img/normal.jpg" alt="R26B の3Dモデル" width="840" height="600">
+    <div class="body"><span class="lab" id="l15" role="img" aria-label="15 R26B"></span>
+      <h2>R26B（マツダ 787B）</h2>
+      <div class="tags"><span>マツダ</span><span>4ローター</span><span>NA</span></div>
+      <p>2.6L・4ローターのロータリー。4つのおむすび形ローターが、90度ずつずれて回ります。</p></div>
+  </a>
+  <a class="tile card" href="./b16a/">
+    <img src="./b16a/img/normal.jpg" alt="B16A の3Dモデル" width="840" height="600">
+    <div class="body"><span class="lab" id="l16" role="img" aria-label="16 B16A"></span>
+      <h2>B16A（シビック・インテグラ）</h2>
+      <div class="tags"><span>ホンダ</span><span>直列4気筒</span><span>VTEC</span></div>
+      <p>1.6L・直4のVTEC。高回転でバルブの動きを切りかえるしくみと、4つのピストンが動きます。</p></div>
+  </a>
   <div class="tile wide">
     <span class="lab">できること</span>
     <ul>
@@ -177,6 +198,9 @@ dots(document.getElementById('l10'),'10 VR38DETT',2);
 dots(document.getElementById('l11'),'11 1LR-GUE',2);
 dots(document.getElementById('l12'),'12 1GZ-FE',2);
 dots(document.getElementById('l13'),'13 1GD-FTV',2);
+dots(document.getElementById('l14'),'14 1NR-FE',2);
+dots(document.getElementById('l15'),'15 R26B',2);
+dots(document.getElementById('l16'),'16 B16A',2);
 
 (function(){
 const cards=[...document.querySelectorAll('a.card')];
